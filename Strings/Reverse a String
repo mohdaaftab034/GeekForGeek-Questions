@@ -3,7 +3,7 @@
 
 
 // Solution --->
-
+// Approach - 1
 // User function Template for C++
 class Solution {
   public:
@@ -14,6 +14,29 @@ class Solution {
         
         while(start < end) {
             swap(s[start], s[end]);
+            start++;
+            end--;
+        }
+        
+        return s;
+    }
+};
+
+
+// Approach - 2
+// User function Template for C++
+class Solution {
+  public:
+    string revStr(string s) {
+        int n = s.size();
+        int start = 0;
+        int end = n - 1;
+        int temp = 0;
+        
+        while(start < end) {
+            temp = s[start];
+            s[start] = s[end];
+            s[end] = temp;
             start++;
             end--;
         }
