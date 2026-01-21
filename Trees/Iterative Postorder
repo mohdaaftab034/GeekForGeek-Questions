@@ -1,0 +1,40 @@
+// GFG Link - https://www.geeksforgeeks.org/problems/postorder-traversal-iterative/1
+
+
+// Iterative Post Order Traversal
+
+// User function Template for C++
+
+/* Tree Node
+struct Node {
+    int data;
+    Node* left;
+    Node* right;
+};*/
+class Solution {
+  public:
+    vector<int> postOrder(Node* node) {
+        stack<Node*> st;
+        vector<int> ans; // Take the ans array for return the answer
+        
+        // Push the root node in the stack
+        st.push(node);
+        
+        while(!st.empty()) {
+            Node* temp = st.top();
+            st.pop();  // Remove the node from the stack
+            
+            ans.push_back(temp -> data);
+            
+            if(temp -> left != NULL)
+                st.push(temp -> left);
+            
+            if(temp -> right != NULL) 
+                st.push(temp -> right);
+        }
+        
+        reverse(ans.begin(), ans.end());
+        
+        return ans;
+    }
+};
