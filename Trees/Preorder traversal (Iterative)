@@ -1,0 +1,46 @@
+// GFG Link - https://www.geeksforgeeks.org/problems/preorder-traversal-iterative/1
+
+
+// Solution ---> Iterative Preorder Traversal without recursion
+/*
+class Node {
+  public:
+    int data;
+    Node* left;
+    Node* right;
+
+    Node(int val) {
+        data = val;
+        left = right = NULL;
+    }
+};
+*/
+class Solution {
+  public:
+    vector<int> preOrder(Node* root) {
+        stack<Node*> st;  
+        // Take the vector for returning the answer
+        vector<int> ans;
+        
+        // Push the root element in the stack
+        st.push(root);
+        
+        // Jab tak loop chalao jab tak stack empty na ho jaye
+        while(!st.empty()) {
+            Node* temp = st.top();
+            st.pop(); // Remove the top element from the stack
+            
+            ans.push_back(temp -> data);
+            
+            if(temp -> right != NULL)
+                st.push(temp -> right);
+            
+            if(temp -> left != NULL)
+                st.push(temp -> left);
+            
+        }
+        
+        // Return the answer
+        return ans;
+    }
+};
