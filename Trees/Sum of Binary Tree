@@ -1,0 +1,20 @@
+// GFG Link - https://www.geeksforgeeks.org/problems/sum-of-binary-tree/1?utm=codolio
+
+
+// Solution --->
+class Solution {
+  public:
+    
+    int solve(Node* root) {
+        if(root == NULL) return 0;
+        
+        int ans = root -> data + solve(root -> right) + solve(root -> left);
+        
+        return ans;
+    }
+    
+  
+    int sumBT(Node* root) {
+        return solve(root);
+    }
+};
