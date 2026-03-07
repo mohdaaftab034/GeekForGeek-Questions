@@ -1,0 +1,62 @@
+// GFG Link - https://www.geeksforgeeks.org/problems/search-in-a-matrix17201720/1?utm=codolio
+
+
+
+// ------------------Solution----------------------
+// User function template for C++
+class Solution {
+  public:
+    bool matSearch(vector<vector<int>> &mat, int x) {
+        int m = mat.size();
+        int n = mat[0].size();
+        
+        for(int i = 0; i < m; i++) {
+            if(mat[i][0] <= x && mat[i][n-1] >= x) {
+                
+                int start = 0;
+                int end = n - 1;
+                // binary search
+                while(start <= end) {
+                    int mid = start + (end - start) / 2;
+                    
+                    if(mat[i][mid] == x) {
+                        return true;
+                    } else if(mat[i][mid] < x) {
+                        start = mid + 1;
+                    } else {
+                        end = mid - 1;
+                    }
+                }
+            }
+        }
+        
+        return false;
+    }
+};
+
+// ---------------------Solution-----------------------
+// User function template for C++
+class Solution {
+  public:
+    bool matSearch(vector<vector<int>> &mat, int x) {
+        int m = mat.size();
+        int n = mat[0].size();
+        
+        int row = 0;
+        int col = n-1;
+        
+        while(row < m && col >= 0) {
+            
+            if(mat[row][col] == x) {
+                return true;
+                
+            } else if(mat[row][col] > x) {
+                col--;
+                
+            } else {
+                row++;
+            }
+        }
+        return false;
+    }
+};
